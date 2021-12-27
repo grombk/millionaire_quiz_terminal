@@ -1,3 +1,5 @@
+import random
+
 class QuestionBank:
     questions = {
         1: "In which part of your body would you find the cruciate ligament?",
@@ -40,3 +42,18 @@ class QuestionBank:
         10: "Mercury",
         11: "Salvador Dali"
     }
+
+    def __init__(self, question_list, answer_list, correct_answer_list):
+        self.question_list = question_list
+        self.answer_list = answer_list
+        self.correct_answer_list = correct_answer_list
+
+    def choose_question(self, question_list):
+        questions_asked = []
+        question = question_list[random.randint(1, len(question_list))]
+        questions_asked.append(question)
+        if question not in questions_asked:
+            return question
+
+        
+            
