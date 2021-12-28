@@ -52,8 +52,13 @@ class QuestionBank:
         questions_asked = []
         question = question_list[random.randint(1, len(question_list))]
         questions_asked.append(question)
-        if question not in questions_asked:
-            return question
+        for question_value in question_list.values():
+            if question not in questions_asked:
+                return question
+            else:
+                return question_list[random.randint(1, len(question_list))]
+
+
 
         
             
