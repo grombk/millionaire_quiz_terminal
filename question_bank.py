@@ -1,47 +1,47 @@
 import random
 
 class QuestionBank:
-    questions = {
-        1: "In which part of your body would you find the cruciate ligament?",
-        2: "What is the name of the main antagonist in the Shakespeare play Othello?",
-        3: "What element is denoted by the chemical symbol Sn in the periodic table?",
-        4: "How many of Henry VIII’s wives were called Catherine?",
-        5: "In what US State is the city Nashville?",
-        6: "What is the currency of Denmark?",
-        7: "Which Tennis Grand Slam is played on a clay surface?",
-        8: "In which European country would you find the Rijksmuseum?",
-        9: "How many films have Al Pacino and Robert De Niro appeared in together?",
-        10: "What is the smallest planet in our solar system?",
-        11: "Which legendary surrealist artist is famous for painting melting clocks?"
-    }
+    questions = [
+        "In which part of your body would you find the cruciate ligament?",
+        "What is the name of the main antagonist in the Shakespeare play Othello?",
+        "What element is denoted by the chemical symbol Sn in the periodic table?",
+        "How many of Henry VIII’s wives were called Catherine?",
+        "In what US State is the city Nashville?",
+        "What is the currency of Denmark?",
+        "Which Tennis Grand Slam is played on a clay surface?",
+        "In which European country would you find the Rijksmuseum?",
+        "How many films have Al Pacino and Robert De Niro appeared in together?",
+        "What is the smallest planet in our solar system?",
+        "Which legendary surrealist artist is famous for painting melting clocks?"
+    ]
 
-    answers = {
-        1: ["Elbow", "Ankle", "Knee", "Hip"],
-        2: ["Iago", "Cassio", "Roderigo", "Brabantio"],
-        3: ["Sodium", "Tin", "Gold", "Phosphorus"],
-        4: ["2", "3", "4", "5",],
-        5: ["Texas", "Washington", "Tennessee", "Ohio"],
-        6: ["Krone", "Florin", "Euro", "Kuna"],
-        7: ["The US Open", "Wimbledon", "The French Open", "The Australian Open"],
-        8: ["Belgium", "Germany", "Switzerland", "The Netherlands"],
-        9: ["2", "3", "4", "5"],
-        10: ["Mercury", "Uranus", "Neptune", "Venus"],
-        11: ["Vincent Van Gogh", "Salvador Dali", "Pablo Picasso", "Claude Monet"]
-    }
+    answers = [
+        ["Elbow", "Ankle", "Knee", "Hip"],
+        ["Iago", "Cassio", "Roderigo", "Brabantio"],
+        ["Sodium", "Tin", "Gold", "Phosphorus"],
+        ["2", "3", "4", "5",],
+        ["Texas", "Washington", "Tennessee", "Ohio"],
+        ["Krone", "Florin", "Euro", "Kuna"],
+        ["The US Open", "Wimbledon", "The French Open", "The Australian Open"],
+        ["Belgium", "Germany", "Switzerland", "The Netherlands"],
+        ["2", "3", "4", "5"],
+        ["Mercury", "Uranus", "Neptune", "Venus"],
+        ["Vincent Van Gogh", "Salvador Dali", "Pablo Picasso", "Claude Monet"]
+    ]
 
-    correct_answers = {
-        1: "Knee",
-        2: "Iago",
-        3: "Tin",
-        4: "3",
-        5: "Tennessee",
-        6: "Krone",
-        7: "The French Open",
-        8: "The Netherlands",
-        9: "4",
-        10: "Mercury",
-        11: "Salvador Dali"
-    }
+    correct_answers = [
+        "Knee",
+        "Iago",
+        "Tin",
+        "3",
+        "Tennessee",
+        "Krone",
+        "The French Open",
+        "The Netherlands",
+        "4",
+        "Mercury",
+        "Salvador Dali"
+    ]
 
     def __init__(self, question_list, answer_list, correct_answer_list):
         self.question_list = question_list
@@ -50,15 +50,23 @@ class QuestionBank:
 
     def choose_question(self, question_list):
         questions_asked = []
-        question = question_list[random.randint(1, len(question_list))]
+        question = question_list[random.randint(1, len(question_list)) - 1]
         questions_asked.append(question)
-        for question_value in question_list.values():
-            if question not in questions_asked:
-                return question
-            else:
-                return question_list[random.randint(1, len(question_list))]
+        return question
 
+    def get_answers_for_question(self, question, answer_list):
+        question_number = self.questions.index(question)
+        answers = answer_list[question_number]
+        return "\n\nA: {answers[0]}  B:  {answers[1]}  C:  {answers[2]}  D:  {answers[3]}\n".format(answers=answers)
 
+    def get_correct_answer(self, question):
+        correct_answer = self.correct_answers[self.questions.index(question)]
+        return correct_answer
+            
+
+    
+
+    
 
         
             
