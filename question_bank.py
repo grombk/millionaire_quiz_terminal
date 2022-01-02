@@ -31,34 +31,6 @@ class QuestionBank:
         "Which legendary surrealist artist is famous for painting melting clocks?": "B"
     }
 
-    answers = [
-        ["Elbow", "Ankle", "Knee", "Hip"],
-        ["Iago", "Cassio", "Roderigo", "Brabantio"],
-        ["Sodium", "Tin", "Gold", "Phosphorus"],
-        ["2", "3", "4", "5",],
-        ["Texas", "Washington", "Tennessee", "Ohio"],
-        ["Krone", "Florin", "Euro", "Kuna"],
-        ["The US Open", "Wimbledon", "The French Open", "The Australian Open"],
-        ["Belgium", "Germany", "Switzerland", "The Netherlands"],
-        ["2", "3", "4", "5"],
-        ["Mercury", "Uranus", "Neptune", "Venus"],
-        ["Vincent Van Gogh", "Salvador Dali", "Pablo Picasso", "Claude Monet"]
-    ]
-
-    correct_answers = [
-        "C",
-        "A",
-        "B",
-        "B",
-        "C",
-        "A",
-        "C",
-        "D",
-        "C",
-        "A",
-        "B"
-    ]
-
     def __init__(self, questions_and_answers, correct_answers):
         self.questions_answers = questions_and_answers
         self.correct_answers = correct_answers
