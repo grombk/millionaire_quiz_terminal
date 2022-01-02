@@ -23,18 +23,13 @@ print(player.greeting(player_name))
 # Instantiate QuestonBank Class
 question = question_bank.QuestionBank(question_bank.QuestionBank.questions, question_bank.QuestionBank.answers, question_bank.QuestionBank.correct_answers)
 
-# Select the first question to ask
-question_1 = question.choose_question(question.questions)
-
-# Get the answers for the question
-answers_to_question_1 = question.get_answers_for_question(question_1, question.answers)
-
-# Get correct answer for question
-correct_answer_question_1 = question.get_correct_answer(question_1)
-
 # Question 1
+print("=== Question 1 ===")
+question_1 = question.choose_question(question.questions)
 print(question_1)
+answers_to_question_1 = question.get_answers_for_question(question_1, question.answers)
 print(answers_to_question_1)
+correct_answer_question_1 = question.get_correct_answer(question_1)
 print(player.answer_choice(correct_answer_question_1))
 
 # Question 2

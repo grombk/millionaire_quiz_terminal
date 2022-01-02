@@ -1,6 +1,8 @@
 import random
 
 class QuestionBank:
+    questions_asked = []
+
     questions = [
         "In which part of your body would you find the cruciate ligament?",
         "What is the name of the main antagonist in the Shakespeare play Othello?",
@@ -49,13 +51,10 @@ class QuestionBank:
         self.correct_answer_list = correct_answer_list
 
     def choose_question(self, question_list):
-        questions_asked = []
-        question = question_list[random.randint(1, len(question_list)) - 1]
-        if not questions_asked:
-            questions_asked.append(question)
-            return question
-        elif question not in questions_asked:
-            return question
+        for question in self.questions:
+            if question not in self.questions_asked:
+                self.questions_asked.append(question)
+                return question
 
     def get_answers_for_question(self, question, answer_list):
         question_number = self.questions.index(question)
