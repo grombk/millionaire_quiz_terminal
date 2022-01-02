@@ -26,11 +26,12 @@ class Player:
                 if self.questions_asked == 1:
                     self.cash_prize = 1000
                     return "CORRECT! You are on £1,000"
-                elif self.cash_prize == 1000000:
-                    return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!"
-                else:
+                elif self.cash_prize < 1000000:
                     self.cash_prize *= 2
                     return "CORRECT! You are on £{:,}".format(self.cash_prize)
+                elif self.cash_prize == 1024000:
+                    return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!"
+                    
             else:
                 return "You haven't answered correctly, better luck next time!"
 
