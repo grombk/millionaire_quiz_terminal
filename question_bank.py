@@ -30,17 +30,17 @@ class QuestionBank:
     ]
 
     correct_answers = [
-        "Knee",
-        "Iago",
-        "Tin",
-        "3",
-        "Tennessee",
-        "Krone",
-        "The French Open",
-        "The Netherlands",
-        "4",
-        "Mercury",
-        "Salvador Dali"
+        "C",
+        "A",
+        "B",
+        "B",
+        "C",
+        "A",
+        "C",
+        "D",
+        "C",
+        "A",
+        "B"
     ]
 
     def __init__(self, question_list, answer_list, correct_answer_list):
@@ -51,13 +51,16 @@ class QuestionBank:
     def choose_question(self, question_list):
         questions_asked = []
         question = question_list[random.randint(1, len(question_list)) - 1]
-        questions_asked.append(question)
-        return question
+        if not questions_asked:
+            questions_asked.append(question)
+            return question
+        elif question not in questions_asked:
+            return question
 
     def get_answers_for_question(self, question, answer_list):
         question_number = self.questions.index(question)
         answers = answer_list[question_number]
-        return "\n\nA: {answers[0]}  B:  {answers[1]}  C:  {answers[2]}  D:  {answers[3]}\n".format(answers=answers)
+        return "\nA: {answers[0]}  B:  {answers[1]}  C:  {answers[2]}  D:  {answers[3]}\n".format(answers=answers)
 
     def get_correct_answer(self, question):
         correct_answer = self.correct_answers[self.questions.index(question)]
