@@ -27,7 +27,7 @@ class Lifeline:
             answers_to_question.remove(correct)
             random_one_wrong = random.choice(answers_to_question)
             Lifeline.fifty_fifty = False
-            print("1: " + correct + "2: " + random_one_wrong)
+            print("1: " + correct + "2: " + random_one_wrong + "\n")
             answer_question.answer_choice(question, correct_answer, name)
         elif correct_answer == "C":
             correct = answers_to_question[2]
@@ -35,7 +35,7 @@ class Lifeline:
             answers_to_question.remove(correct)
             random_one_wrong = random.choice(answers_to_question)
             Lifeline.fifty_fifty = False
-            print("1: " + correct + "2: " + random_one_wrong)
+            print("1: " + correct + "2: " + random_one_wrong + "\n")
             answer_question.answer_choice(question, correct_answer, name)
         elif correct_answer == "D":
             correct = answers_to_question[3]
@@ -43,6 +43,6 @@ class Lifeline:
             answers_to_question.remove(correct)
             random_one_wrong = random.choice(answers_to_question)
             Lifeline.fifty_fifty = False
-            print("1: " + correct + "2: " + random_one_wrong)
+            print("1: " + correct + "2: " + random_one_wrong + "\n")
             answer_question.answer_choice(question, correct_answer, name)
     
