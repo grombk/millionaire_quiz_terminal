@@ -43,7 +43,7 @@ class Player:
             print("3: Call a Friend")
             lifeline_choice = input("Choose an option: \n")
             if lifeline_choice == "1":
-                print("You've selected 50/50 - Computer, please take away two random wrong answers!")
+                print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
                 fifty_fifty_lifeline = lifeline.Lifeline()
                 take_away_two = fifty_fifty_lifeline.fifty_fifty(question, correct_answer, name)
                 print(take_away_two)
