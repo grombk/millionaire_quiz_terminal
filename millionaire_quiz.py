@@ -33,18 +33,6 @@ def quiz_rounds(num):
   correct_answer_question_num = question.get_correct_answer(question_num)
   print(player.answer_choice(question_num, correct_answer_question_num, player_name))
 
-# quiz_rounds(1)
-# quiz_rounds(2)
-# quiz_rounds(3)
-# quiz_rounds(4)
-# quiz_rounds(5)
-# quiz_rounds(6)
-# quiz_rounds(7)
-# quiz_rounds(8)
-# quiz_rounds(9)
-# quiz_rounds(10)
-# quiz_rounds(11)
-
 rounds = 1
 while rounds < 11:
     quiz_rounds(rounds)
