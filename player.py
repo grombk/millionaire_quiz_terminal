@@ -4,7 +4,7 @@ import lifeline
 
 class Player:
     cash_prize = 0
-    questions_asked = 0
+    questions_correctly_answered = 0
 
     def __init__(self, name):
         self.name = name
@@ -18,22 +18,24 @@ class Player:
         print("2: Use Lifeline")
         print("3: Take the Money")
         option = input("Choose an option: \n")
-        if option == "1":
-            self.questions_asked += 1
+        while option == "1":
             answer = input("What is the answer?: ")
             if answer not in ["A", "B", "C", "D"]:
-                return "Please enter A, B, C or D"
+                print("Please enter A, B, C or D")
+                break
             elif answer == correct_answer:
-                if self.questions_asked == 1:
+                if self.questions_correctly_answered == 0:
+                    self.questions_correctly_answered += 1
                     self.cash_prize = 1000
-                    return "CORRECT! You are on £1,000"
-                elif self.cash_prize < 1000000:
+                    return "CORRECT! You are on £1,000\n"
+                if self.questions_correctly_answered and self.cash_prize < 1000000:
+                    self.questions_correctly_answered += 1
                     self.cash_prize *= 2
-                    return "CORRECT! You are on £{:,}".format(self.cash_prize)
-                elif self.cash_prize == 1024000:
-                    return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!"        
+                    return "CORRECT! You are on £{:,}\n".format(self.cash_prize)
+                elif self.questions_correctly_answered == 11:
+                    return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!\n"        
             else:
-                return "You haven't answered correctly, better luck next time!"
+                return "You haven't answered correctly, better luck next time!\n"
 
         
         if option == "2":
@@ -46,7 +48,7 @@ class Player:
                 print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
                 fifty_fifty_lifeline = lifeline.Lifeline()
                 take_away_two = fifty_fifty_lifeline.fifty_fifty(question, correct_answer, name)
-                print(take_away_two)
+                return take_away_two
             
 
             if lifeline_choice == "2":

@@ -7,6 +7,20 @@ class Lifeline:
     ask_the_audience = True
     call_a_friend = True
 
+    def get_correct_letter_answer(self, question, correct_answer):
+        answers_to_question = question_bank.QuestionBank.questions_answers[question]
+        correct_question = ""
+        if correct_answer == "A":
+            correct_question += answers_to_question[0]
+        elif correct_answer == "B":
+            correct_question += answers_to_question[1]
+        elif correct_answer == "C":
+            correct_question += answers_to_question[2]
+        elif correct_answer == "D":
+            correct_question += answers_to_question[3]
+        
+        return correct_question
+
     def get_wrong_letter_answer(self, question, random_wrong_answer):
         answers_to_question = question_bank.QuestionBank.questions_answers[question]
         
@@ -23,42 +37,20 @@ class Lifeline:
         return letter_answer
 
     def fifty_fifty(self, question, correct_answer, name):
-        # Get the answers for the question being asked
+        # Initilise Classes
         answers_to_question = question_bank.QuestionBank.questions_answers[question]
         copy_of_answers = answers_to_question
         answer_question = player.Player(name)
-        # Get the correct answer and three wrong answers
-        # Randomly choose a wrong answer from incorrect list
-        if correct_answer == "A":
-            correct = copy_of_answers[0]
-            copy_of_answers.remove(correct)
-            random_one_wrong = random.choice(copy_of_answers)
-            wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
-            Lifeline.fifty_fifty = False
-            print("A: {correct} {wrong_letter_answer}: {random_one_wrong}\n".format(correct=correct, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong))
-            print(answer_question.answer_choice(question, correct_answer, name))
-        elif correct_answer == "B":
-            correct = copy_of_answers[1]
-            copy_of_answers.remove(correct)
-            random_one_wrong = random.choice(copy_of_answers)
-            wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
-            Lifeline.fifty_fifty = False
-            print("B: {correct} {wrong_letter_answer}: {random_one_wrong}\n".format(correct=correct, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong))
-            print(answer_question.answer_choice(question, correct_answer, name))
-        elif correct_answer == "C":
-            correct = copy_of_answers[2]
-            copy_of_answers.remove(correct)
-            random_one_wrong = random.choice(copy_of_answers)
-            wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
-            Lifeline.fifty_fifty = False
-            print("C: {correct} {wrong_letter_answer}: {random_one_wrong}\n".format(correct=correct, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong))
-            print(answer_question.answer_choice(question, correct_answer, name))
-        elif correct_answer == "D":
-            correct = copy_of_answers[3]
-            copy_of_answers.remove(correct)
-            random_one_wrong = random.choice(copy_of_answers)
-            wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
-            Lifeline.fifty_fifty = False
-            print("D: {correct} {wrong_letter_answer}: {random_one_wrong}\n".format(correct=correct, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong))
-            print(answer_question.answer_choice(question, correct_answer, name))
+
+        correct_question = self.get_correct_letter_answer(question, correct_answer)
+        copy_of_answers.remove(correct_question)
+        random_one_wrong = random.choice(copy_of_answers)
+        wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
+        
+
+        self.fifty_fifty = False
+        print("{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong))
+        return answer_question.answer_choice(question, correct_answer, name)
+
+        
     
