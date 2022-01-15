@@ -49,8 +49,8 @@ class Lifeline:
         
 
         self.fifty_fifty = False
-        print("{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong))
-        return answer_question.answer_choice(question, correct_answer, name)
+        return "{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong)
+        # return answer_question.answer_choice(question, correct_answer, name)
 
         
     

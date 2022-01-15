@@ -20,48 +20,52 @@ class Player:
         option = input("Choose an option: \n")
         while option == "1":
             answer = input("What is the answer?: ")
-            if answer not in ["A", "B", "C", "D"]:
+            while answer not in ["A", "B", "C", "D"]:
                 print("Please enter A, B, C or D")
                 break
-            elif answer == correct_answer:
+            while answer == correct_answer:
                 if self.questions_correctly_answered == 0:
                     self.questions_correctly_answered += 1
                     self.cash_prize = 1000
                     return "CORRECT! You are on £1,000\n"
-                if self.questions_correctly_answered and self.cash_prize < 1000000:
+                elif self.questions_correctly_answered and self.cash_prize < 1000000:
                     self.questions_correctly_answered += 1
                     self.cash_prize *= 2
                     return "CORRECT! You are on £{:,}\n".format(self.cash_prize)
                 elif self.questions_correctly_answered == 11:
                     return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!\n"        
-            else:
-                return "You haven't answered correctly, better luck next time!\n"
+            
+            # else:
+            #     return "You haven't answered correctly, better luck next time!\n"
 
         
-        if option == "2":
+        while option == "2":
             print("Which lifeline would you like to use?")
             print("1: 50/50")
             print("2: Ask the Audience")
             print("3: Call a Friend")
+            print("4: Go Back")
+            
             lifeline_choice = input("Choose an option: \n")
             if lifeline_choice == "1":
                 print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
                 fifty_fifty_lifeline = lifeline.Lifeline()
                 take_away_two = fifty_fifty_lifeline.fifty_fifty(question, correct_answer, name)
-                return take_away_two
+                print(take_away_two)
+                return self.answer_choice(question, correct_answer, name)
             
 
-            if lifeline_choice == "2":
+            while lifeline_choice == "2":
                 print("You want to ask the audience! Audience, please select A, B, C or D")
                 # Run code to randomise answer selection from sample of 100
                 # Correct answer = 60-90%?
                 # Incorrect answer = 15-55%?
 
-            if lifeline_choice == "3":
+            while lifeline_choice == "3":
                 print("You want to call a friend? We'll call them now?")
                 print("Hey" + self.name + ", the answer is " + correct_answer)
 
-        if option == "3":
+        while option == "3":
             print("You want to take the money? Are you sure?")
             confirm_take = input("Yes or No? ")
             # if confirm_take == "Yes":
