@@ -2,6 +2,8 @@ import random
 import question_bank
 import lifeline
 
+lifelines = lifeline.Lifeline()
+
 class Player:
     cash_prize = 0
     questions_correctly_answered = 0
@@ -48,9 +50,7 @@ class Player:
             
             lifeline_choice = input("Choose an option: \n")
             if lifeline_choice == "1":
-                print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
-                fifty_fifty_lifeline = lifeline.Lifeline()
-                take_away_two = fifty_fifty_lifeline.fifty_fifty(question, correct_answer, name)
+                take_away_two = lifelines.fifty_fifty(question, correct_answer)
                 print(take_away_two)
                 return self.answer_choice(question, correct_answer, name)
             

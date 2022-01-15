@@ -3,9 +3,9 @@ import question_bank
 import random
 
 class Lifeline:
-    fifty_fifty = True
-    ask_the_audience = True
-    call_a_friend = True
+    fifty_fifty_ready = True
+    ask_the_audience_ready = True
+    call_a_friend_ready = True
 
     def get_correct_letter_answer(self, question, correct_answer):
         answers_to_question = question_bank.QuestionBank.questions_answers[question]
@@ -36,21 +36,24 @@ class Lifeline:
 
         return letter_answer
 
-    def fifty_fifty(self, question, correct_answer, name):
+    def fifty_fifty(self, question, correct_answer):
         # Initilise Classes
-        answers_to_question = question_bank.QuestionBank.questions_answers[question]
-        copy_of_answers = answers_to_question
-        answer_question = player.Player(name)
-
-        correct_question = self.get_correct_letter_answer(question, correct_answer)
-        copy_of_answers.remove(correct_question)
-        random_one_wrong = random.choice(copy_of_answers)
-        wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
         
+        if self.fifty_fifty_ready:
+            print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
+            answers_to_question = question_bank.QuestionBank.questions_answers[question]
+            copy_of_answers = answers_to_question
 
-        self.fifty_fifty = False
-        return "{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong)
-        # return answer_question.answer_choice(question, correct_answer, name)
+            correct_question = self.get_correct_letter_answer(question, correct_answer)
+            copy_of_answers.remove(correct_question)
+            random_one_wrong = random.choice(copy_of_answers)
+            wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
+            
+            self.fifty_fifty_ready = False
+            return "{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong)
+            
+        else:
+            return "\n=== You've already used your 50/50 lifeline! ===\n"
 
         
     
