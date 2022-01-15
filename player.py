@@ -1,12 +1,14 @@
 import random
 import question_bank
 import lifeline
+import sys
 
 lifelines = lifeline.Lifeline()
 
 class Player:
     cash_prize = 0
     questions_correctly_answered = 0
+    game_over = False
 
     def __init__(self, name):
         self.name = name
@@ -37,8 +39,9 @@ class Player:
                 elif self.questions_correctly_answered == 11:
                     return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!\n"        
             
-            # else:
-            #     return "You haven't answered correctly, better luck next time!\n"
+            else:
+                print("You haven't answered correctly, better luck next time! You've won £{:,}!\n".format(self.cash_prize))
+                sys.exit()
 
         
         while option == "2":
