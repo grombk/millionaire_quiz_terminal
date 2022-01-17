@@ -48,9 +48,12 @@ class Lifeline:
             copy_of_answers.remove(correct_question)
             random_one_wrong = random.choice(copy_of_answers)
             wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
-            
             self.fifty_fifty_ready = False
-            return "{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong)
+            if correct_answer < wrong_letter_answer:
+                return "{correct_answer}: {correct_question} {wrong_letter_answer}: {random_one_wrong}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong)
+            else:
+                return "{wrong_letter_answer}: {random_one_wrong} {correct_answer}: {correct_question}\n".format(correct_question=correct_question, correct_answer=correct_answer, wrong_letter_answer=wrong_letter_answer, random_one_wrong=random_one_wrong)
+            
             
         else:
             return "\n=== You've already used your 50/50 lifeline! ===\n"
