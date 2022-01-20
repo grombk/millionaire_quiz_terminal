@@ -57,14 +57,12 @@ class Player:
                 print(take_away_two)
                 return self.answer_choice(question, correct_answer, name)
             
+            if lifeline_choice == "2":
+                audience_answers = lifelines.ask_the_audience(question, correct_answer)
+                print(audience_answers)
+                return self.answer_choice(question, correct_answer, name)
 
-            while lifeline_choice == "2":
-                print("You want to ask the audience! Audience, please select A, B, C or D")
-                # Run code to randomise answer selection from sample of 100
-                # Correct answer = 60-90%?
-                # Incorrect answer = 15-55%?
-
-            while lifeline_choice == "3":
+            if lifeline_choice == "3":
                 print("You want to call a friend? We'll call them now?")
                 print("Hey" + self.name + ", the answer is " + correct_answer)
 
