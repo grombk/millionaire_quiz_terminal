@@ -1,4 +1,7 @@
 import random
+import player
+
+questions_to_player = player.Player()
 
 class QuestionBank:
     questions_asked = []
@@ -14,7 +17,8 @@ class QuestionBank:
         "In which European country would you find the Rijksmuseum?": ["Belgium", "Germany", "Switzerland", "The Netherlands"],
         "How many films have Al Pacino and Robert De Niro appeared in together?": ["2", "3", "4", "5"],
         "What is the smallest planet in our solar system?": ["Mercury", "Uranus", "Neptune", "Venus"],
-        "Which legendary surrealist artist is famous for painting melting clocks?": ["Vincent Van Gogh", "Salvador Dali", "Pablo Picasso", "Claude Monet"]
+        "Which legendary surrealist artist is famous for painting melting clocks?": ["Vincent Van Gogh", "Salvador Dali", "Pablo Picasso", "Claude Monet"],
+        "What is first letter on the bottom row of a keyboard?": ["Z", "X", "S", "C"]
     }
 
     questions_correct_answers = {
@@ -28,7 +32,8 @@ class QuestionBank:
         "In which European country would you find the Rijksmuseum?": "D",
         "How many films have Al Pacino and Robert De Niro appeared in together?": "C",
         "What is the smallest planet in our solar system?": "A",
-        "Which legendary surrealist artist is famous for painting melting clocks?": "B"
+        "Which legendary surrealist artist is famous for painting melting clocks?": "B",
+        "What is first letter on the bottom row of a keyboard?": "A"
     }
 
     def __init__(self, questions_and_answers, correct_answers):
@@ -51,7 +56,17 @@ class QuestionBank:
     def get_correct_answer(self, question):
         correct_answer = self.questions_correct_answers[question]
         return correct_answer
-            
+
+    def ask_question(self, name, round):
+        print("\n{name}, here is Question {round}\n".format(name=name, round=round))
+        print("=== Question {round} ===".format(round=round))
+        question = self.choose_question(self.questions_answers)
+        print(question)
+        answers_to_question = self.get_answers_for_question(question)
+        print(answers_to_question)
+        correct_answer_to_question = self.get_correct_answer(question)
+        print(questions_to_player.answer_choice(question, correct_answer_to_question))
+
 
     
 

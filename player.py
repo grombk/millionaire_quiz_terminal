@@ -1,5 +1,3 @@
-import random
-import question_bank
 import lifeline
 import sys
 
@@ -10,13 +8,10 @@ class Player:
     questions_correctly_answered = 0
     game_over = False
 
-    def __init__(self, name):
-        self.name = name
-
     def greeting(self, name):
         return "Welcome {name}! Here is your first question...\n".format(name=name)
 
-    def answer_choice(self, question, correct_answer, name):
+    def answer_choice(self, question, correct_answer):
         print("What do you want to do?")
         print("1: Answer")
         print("2: Use Lifeline")
@@ -48,23 +43,23 @@ class Player:
             print("Which lifeline would you like to use?")
             print("1: 50/50")
             print("2: Ask the Audience")
-            print("3: Call a Friend")
+            print("3: Skip Question")
             print("4: Go Back")
             
             lifeline_choice = input("Choose an option: \n")
             if lifeline_choice == "1":
                 take_away_two = lifelines.fifty_fifty(question, correct_answer)
                 print(take_away_two)
-                return self.answer_choice(question, correct_answer, name)
+                return self.answer_choice(question, correct_answer)
             
             if lifeline_choice == "2":
                 audience_answers = lifelines.ask_the_audience(question, correct_answer)
                 print(audience_answers)
-                return self.answer_choice(question, correct_answer, name)
+                return self.answer_choice(question, correct_answer)
 
             if lifeline_choice == "3":
-                print("You want to call a friend? We'll call them now?")
-                print("Hey" + self.name + ", the answer is " + correct_answer)
+                print("Skipping question...")
+                
 
         while option == "3":
             print("You want to take the money? Are you sure?")
