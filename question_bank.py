@@ -65,7 +65,7 @@ class QuestionBank:
         answers_to_question = self.get_answers_for_question(question)
         print(answers_to_question)
         correct_answer_to_question = self.get_correct_answer(question)
-        print(questions_to_player.answer_choice(question, correct_answer_to_question))
+        return questions_to_player.answer_choice(question, correct_answer_to_question)
 
 
     

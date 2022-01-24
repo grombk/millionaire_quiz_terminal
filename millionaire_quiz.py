@@ -17,7 +17,7 @@ print("============================================================")
 
 rounds = 1
 
-while rounds < 12:
+while rounds < 13:
     question = question_bank.QuestionBank(question_bank.QuestionBank.questions_answers, question_bank.QuestionBank.questions_correct_answers)
     question.ask_question(player_name, rounds)
     rounds += 1

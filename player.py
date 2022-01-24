@@ -16,24 +16,27 @@ class Player:
         print("1: Answer")
         print("2: Use Lifeline")
         print("3: Take the Money")
-        option = input("Choose an option: \n")
+        option = input("\nChoose an option: \n")
         while option == "1":
             answer = input("What is the answer?: ")
             while answer not in ["A", "B", "C", "D"]:
                 print("Please enter A, B, C or D")
                 break
-            while answer == correct_answer:
+            if answer == correct_answer:
                 if self.questions_correctly_answered == 0:
                     self.questions_correctly_answered += 1
                     self.cash_prize = 1000
-                    return "CORRECT! You are on £1,000\n"
-                elif self.questions_correctly_answered and self.cash_prize < 1000000:
+                    print("CORRECT! You are on £1,000\n")
+                    return
+                elif self.cash_prize < 1000000:
                     self.questions_correctly_answered += 1
                     self.cash_prize *= 2
-                    return "CORRECT! You are on £{:,}\n".format(self.cash_prize)
-                elif self.questions_correctly_answered == 11:
-                    return "CORRECT! Congratulations, you have won the top prize of £1,000,000!!!\n"        
-            
+                    if self.questions_correctly_answered == 11:
+                      print("CORRECT! Congratulations, you have won the top prize of £1,000,000!!!\n")   
+                      sys.exit() 
+                    else:
+                      print("CORRECT! You are on £{:,}\n".format(self.cash_prize))
+                      return
             else:
                 print("You haven't answered correctly, better luck next time! You've won £{:,}!\n".format(self.cash_prize))
                 sys.exit()
@@ -58,8 +61,7 @@ class Player:
                 return self.answer_choice(question, correct_answer)
 
             if lifeline_choice == "3":
-                print("Skipping question...")
-                
+                return lifelines.skip_question()
 
         while option == "3":
             print("You want to take the money? Are you sure?")
