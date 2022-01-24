@@ -66,13 +66,13 @@ class Lifeline:
 
             # Could I create one string variable here and then insert where the correct percentage should go? This would involve shifting the wrong perc around
             if correct_answer == "A":
-              return "=== A: {answer_list[0]} - {percentage_correct}% B: {answer_list[1]} - {first_perc_wrong}% C: {answer_list[2]} - {second_perc_wrong}% D: {answer_list[3]} - {third_perc_wrong}% ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
+              return "=== A: {answer_list[0]} ({percentage_correct}%) B: {answer_list[1]} ({first_perc_wrong}%) C: {answer_list[2]} ({second_perc_wrong}%) D: {answer_list[3]} ({third_perc_wrong}%) ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
             elif correct_answer == "B":
-              return "=== A: {answer_list[0]} - {first_perc_wrong}% B: {answer_list[1]} - {percentage_correct}% C: {answer_list[2]} - {second_perc_wrong}% D: {answer_list[3]} - {third_perc_wrong}% ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
+              return "=== A: {answer_list[0]} ({first_perc_wrong}%) B: {answer_list[1]} ({percentage_correct}%) C: {answer_list[2]} ({second_perc_wrong}%) D: {answer_list[3]} ({third_perc_wrong}%) ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
             elif correct_answer == "C":
-              return "=== A: {answer_list[0]} - {first_perc_wrong}% B: {answer_list[1]} - {second_perc_wrong}% C: {answer_list[2]} - {percentage_correct}% D: {answer_list[3]} - {third_perc_wrong}% ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
+              return "=== A: {answer_list[0]} ({first_perc_wrong}%) B: {answer_list[1]} ({second_perc_wrong}%) C: {answer_list[2]} ({percentage_correct}%) D: {answer_list[3]} ({third_perc_wrong}%) ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
             elif correct_answer == "D":
-              return "=== A: {answer_list[0]} - {first_perc_wrong}% B: {answer_list[1]} - {second_perc_wrong}% C: {answer_list[2]} - {third_perc_wrong}% D: {answer_list[3]} - {percentage_correct}% ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
+              return "=== A: {answer_list[0]} ({first_perc_wrong}%) B: {answer_list[1]} ({second_perc_wrong}%) C: {answer_list[2]} ({third_perc_wrong}%) D: {answer_list[3]} ({percentage_correct}%) ===\n".format(answer_list=answer_list, percentage_correct=percentage_correct, first_perc_wrong=first_perc_wrong, second_perc_wrong=second_perc_wrong, third_perc_wrong=third_perc_wrong)
 
         else:
             return "\n=== You've already used your Ask the Audience lifeline! ===\n"

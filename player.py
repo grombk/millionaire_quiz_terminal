@@ -18,8 +18,8 @@ class Player:
           print("2: Use Lifeline")
           print("3: Take the Money")
           option = input("\nChoose an option: \n")
-          
-          while option not in [1, 2, 3]:
+
+          while option not in ["1", "2", "3"]:
             print("Please enter 1, 2 or 3\n")
             break
 
@@ -61,13 +61,16 @@ class Player:
                   print(take_away_two)
                   return self.answer_choice(question, correct_answer)
               
-              if lifeline_choice == "2":
+              elif lifeline_choice == "2":
                   audience_answers = lifelines.ask_the_audience(question, correct_answer)
                   print(audience_answers)
                   return self.answer_choice(question, correct_answer)
 
-              if lifeline_choice == "3":
+              elif lifeline_choice == "3":
                   return lifelines.skip_question()
+
+              else:
+                  break
 
           while option == "3":
               print("\nYou want to take the money? Are you sure?\n")
