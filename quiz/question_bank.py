@@ -1,7 +1,7 @@
 import random
-import player
+from .player import Player
 
-questions_to_player = player.Player()
+questions_to_player = Player()
 
 class QuestionBank:
     questions_asked = []

@@ -1,7 +1,7 @@
-import lifeline
+from .lifeline import Lifeline
 import sys
 
-lifelines = lifeline.Lifeline()
+lifelines = Lifeline()
 
 class Player:
     cash_prize = 0

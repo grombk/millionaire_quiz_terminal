@@ -1,5 +1,5 @@
 import random
-import question_bank
+
 
 class Lifeline:
     fifty_fifty_ready = True
@@ -7,7 +7,8 @@ class Lifeline:
     skip_question_ready = True
 
     def get_correct_letter_answer(self, question, correct_answer):
-        answers_to_question = question_bank.QuestionBank.questions_answers[question]
+        from .question_bank import QuestionBank
+        answers_to_question = QuestionBank.questions_answers[question]
         correct_question = ""
         if correct_answer == "A":
             correct_question += answers_to_question[0]
@@ -21,7 +22,8 @@ class Lifeline:
         return correct_question
 
     def get_wrong_letter_answer(self, question, random_one_wrong):
-        answers_to_question = question_bank.QuestionBank.questions_answers[question]
+        from .question_bank import QuestionBank
+        answers_to_question = QuestionBank.questions_answers[question]
         
         letter_answer = ""
         
@@ -37,9 +39,10 @@ class Lifeline:
         return letter_answer
 
     def fifty_fifty(self, question, correct_answer):        
+        from .question_bank import QuestionBank
         if self.fifty_fifty_ready:
             print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
-            answer_list = question_bank.QuestionBank.questions_answers[question]
+            answer_list = QuestionBank.questions_answers[question]
             correct_question = self.get_correct_letter_answer(question, correct_answer)
             random_one_wrong = random.choice(answer_list)
             if random_one_wrong == correct_question:
@@ -55,9 +58,10 @@ class Lifeline:
             return "\n=== You've already used your 50/50 lifeline! ===\n"
 
     def ask_the_audience(self, question, correct_answer):
+        from .question_bank import QuestionBank
         if self.ask_the_audience_ready:
             print("\nYou've selected Ask the Audience - Audience, please choose A, B, C or D.\n")
-            answer_list = question_bank.QuestionBank.questions_answers[question]
+            answer_list = QuestionBank.questions_answers[question]
             
             percentage_correct = random.randint(55, 96)
             first_perc_wrong = random.randint(1, (100 - percentage_correct))
