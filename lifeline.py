@@ -20,17 +20,18 @@ class Lifeline:
         
         return correct_question
 
-    def get_wrong_letter_answer(self, question, random_wrong_answer):
+    def get_wrong_letter_answer(self, question, random_one_wrong):
         answers_to_question = question_bank.QuestionBank.questions_answers[question]
         
         letter_answer = ""
-        if random_wrong_answer == answers_to_question[0]:
+        
+        if random_one_wrong == answers_to_question[0]:
             letter_answer += "A"
-        elif random_wrong_answer == answers_to_question[1]:
+        elif random_one_wrong == answers_to_question[1]:
             letter_answer += "B"
-        elif random_wrong_answer == answers_to_question[2]:
+        elif random_one_wrong == answers_to_question[2]:
             letter_answer += "C"
-        elif random_wrong_answer == answers_to_question[3]:
+        elif random_one_wrong == answers_to_question[3]:
             letter_answer += "D"
 
         return letter_answer
@@ -40,8 +41,9 @@ class Lifeline:
             print("\nYou've selected 50/50 - Computer, please take away two random wrong answers!")
             answer_list = question_bank.QuestionBank.questions_answers[question]
             correct_question = self.get_correct_letter_answer(question, correct_answer)
-            answer_list.remove(correct_question)
             random_one_wrong = random.choice(answer_list)
+            if random_one_wrong == correct_question:
+              random_one_wrong = random.choice(answer_list)
             wrong_letter_answer = self.get_wrong_letter_answer(question, random_one_wrong)
             self.fifty_fifty_ready = False
             if correct_answer < wrong_letter_answer:
@@ -60,7 +62,7 @@ class Lifeline:
             percentage_correct = random.randint(55, 96)
             first_perc_wrong = random.randint(1, (100 - percentage_correct))
             second_perc_wrong = random.randint(1, (100 - percentage_correct - first_perc_wrong))
-            third_perc_wrong = random.randint(1, (100 - percentage_correct - first_perc_wrong - second_perc_wrong))
+            third_perc_wrong = 100 - (percentage_correct + first_perc_wrong + second_perc_wrong)
 
             self.ask_the_audience_ready = False
 
